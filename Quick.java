@@ -55,9 +55,9 @@ public class Quick implements Sort{
 
 	//Cambio de datos
 	private static void swap(ArrayList<Compare> dato, primer, siguiente){
-		Compare change;
-		change = dato.get(primer);
-		dato.set(siguiente, change)
+		Compare temporal;
+		temporal = dato.get(primer);
+		dato.set(siguiente, temporal)
 		dato.set(primer, dato.get(siguiente));
 	}
 }
