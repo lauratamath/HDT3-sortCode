@@ -13,8 +13,17 @@ public class Quick implements Sort{
 	//pre: arreglo no ordenado
 	//post: arreglo ordenado
 	public ArrayList<Compare> sort(ArrayList<Compare> dato, int datos){
-		quickSortRecursive(0, dato, datos -1);
+		qs(dato, datos -1, 0);
 		return dato;
+	}
+
+	private static void qs(ArrayList<Compare> dato, int left, int right){
+		int ultright;
+		if (left >= right) return;
+
+		ultright = posiciona(dato, right, left);
+		qs(dato, ultright+1, right);
+		qs(dato, left, ultright-1);
 	}
 
 	/**
@@ -23,13 +32,13 @@ public class Quick implements Sort{
 	@param right //inidica que tan a la derecha esta el inicio del array
 	**/
 
-	private static int partitio(ArrayList<Compare> dato, int right, int left){
+	private static int posiciona(ArrayList<Compare> dato, int right, int left){
 		while (true){
 			//Moviendo el puntero hacia la izquierda
 			while(left < right && dato.get(left).compareTo(dato.get(right)) < 0){
 				right --;
 			}
-			if(izquierda < right){
+			if(left < right){
 					swap(dato, left ++, right);
 			}else{
 				return left;
@@ -54,10 +63,10 @@ public class Quick implements Sort{
 	**/
 
 	//Cambio de datos
-	private static void swap(ArrayList<Compare> dato, primer, siguiente){
+	private static void swap(ArrayList<Compare> dato, int primer, int siguiente){
 		Compare temporal;
 		temporal = dato.get(primer);
-		dato.set(siguiente, temporal)
+		dato.set(siguiente, temporal);
 		dato.set(primer, dato.get(siguiente));
 	}
 }

@@ -13,14 +13,10 @@ public class Merge implements Sort{
 	@param dato es el arreglo en el cual deben de estar ordenados los datos
 	@return arreglo ordenado
 	**/
-	public ArrayList<compare> sort(ArrayList<Compare> dato, int datos){
+	public ArrayList<Compare> sort(ArrayList<Compare> dato, int datos){
 		ArrayList<Compare> temporal = new ArrayList<Compare>();
 
-		for(int i=0; i<dato.size(); i++){
-			temporal.add(new Compare());
-		}
-
-		margeSortRecursive(dato, temporal, datos -1, 0);
+		mergeSortRecursive(dato,temporal,0,  datos-1);
 		return dato;
 	}
 
@@ -33,7 +29,7 @@ public class Merge implements Sort{
 			if(dato.get(next).compareTo(temporal.get(actual))<0){
 				dato.set(resultante++, dato.get(next++));
 			}else{
-				dato.set(resultante++, temporal.get(actual++))
+				dato.set(resultante++, temporal.get(actual++));
 			}
 		}
 		while(actual< dos){

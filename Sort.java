@@ -17,5 +17,5 @@ public interface Sort{
 	@return los datos se encuentran ordenados en el array
 	 metodo que ordena el array  por medio de seleccion
 	**/
-	public ArrayList<Compare> sort(ArrayList<Compare> dato, int datos)
+	public ArrayList<Compare> sort(ArrayList<Compare> dato, int datos);
 }

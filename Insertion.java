@@ -6,27 +6,27 @@
 * @version 11/02/2020
 * Seccion: 20		Catedrático: Douglas B. 	Clase: Algortimos y estructuras de datos
 */
-import java.util.ArrrayList;
+import java.util.ArrayList;
 public class Insertion implements Sort{
 	@Override
 	public ArrayList<Compare> sort(ArrayList<Compare> dato, int datos){
-		int orden =1; //Cantidad actual de datos ordenados
+		int orden = 1; //Cantidad actual de datos ordenados
 		int index; // indice actual
 
 		//Ciclo para ordenar
 		while(orden < datos){
-			int temporal = dato.get(orden).getValor();
+			Compare actual = dato.get(orden);
 
 			for(index = orden; index > 0; index --){
 				//Verificar si es mayor el valor
-				if (temporal < dato.get(index -1).getValor()){
-					dato.set(index, dato.get(index-1));
+				if (actual.compareTo(dato.get(index -1))<0){
+					dato.set(index, dato.get(index-1));	
 				} else{
 					break;
 				}
 			}
 
-			dato.get(index).setValor(temporal); //Volver a agregar el antiguo valor
+			dato.set(index, actual); //Volver a agregar el antiguo valor
 			orden ++;
 		}
 		return dato;
